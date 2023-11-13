@@ -38,3 +38,14 @@ class Utilities:
         plt.tight_layout()
         plt.show()
         return fig, axis
+
+    @staticmethod
+    def read_and_show(
+        *images, cvtColor_code=cv2.COLOR_BGR2RGB, cmap="gray", figsize=(12, 12)
+    ):
+        results = Utilities.read_images(*images, cvtColor_code=cvtColor_code)
+        if isinstance(results, list):
+            Utilities.show_images(*results, cmap=cmap, figsize=figsize)
+        else:
+            Utilities.show_images(results, cmap=cmap, figsize=figsize)
+        return results
